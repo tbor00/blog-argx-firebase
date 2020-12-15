@@ -1,0 +1,159 @@
+#header {
+    z-index: 0 !important;
+    width: 100% !important;
+    height: 1000px;
+    background-image: url(img/fondorojo.jpg) !important;
+    background-color: rgb(39, 38, 38) !important;
+    background-blend-mode: soft-light !important;  
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    object-fit: cover !important;
+    background-position: center center !important;
+}
+
+h2 {
+    color: white;
+}
+
+
+
+.link {
+    border: 1px solid white;
+    color: white;
+    text-transform: none !important;
+    text-decoration: none !important;
+    padding: 10px;
+}
+
+
+.link:hover {
+    color: white;
+    opacity: .9;
+}
+
+.usuario {
+    margin-top: 30px;
+}
+
+#user  {
+    display: block;
+    margin: 10px;
+}
+
+#pw {
+    display: block;
+    margin:10px
+}
+
+#ingresoadmin {
+    margin: 10px;
+    border: none;
+    background: crimson;
+    color: white;
+    padding: 5px;
+    outline: none;
+}
+
+#name {
+    display:none;
+}
+
+
+#crear {
+    display:none;
+}
+
+#signout {
+    display: none;
+    cursor: pointer;
+}
+
+#name {
+    cursor: pointer;
+}
+
+#contenidoBLOG {
+    display: none;
+}
+
+#namepost {
+    display: block;
+    margin: 10px;
+}
+
+#titulo {
+    display: block;
+    margin: 10px;
+}
+
+#msgPOST {
+    display: block;
+    margin: 10px;
+}
+
+#update {
+    border: none;
+    background: #cc1616;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 100px;
+}
+
+#msgPOST {
+    border: 1px solid #cc1616;
+    height: 100px;
+    border-radius: 5%;
+}
+
+#titulo {
+    border: 1px solid #cc1616;
+    border-radius: 3%;
+}
+
+#namepost {
+    border: 1px solid #cc1616;
+    border-radius: 3%;
+    outline: none;
+}
+
+#namepost:focus{
+    border: 1px solid #cc1616;
+    border-radius: 3%;
+    outline: none;
+}
+
+#titulo:focus {
+    border: 1px solid #cc1616;
+    border-radius: 3%;
+    outline: none;
+}
+
+
+#msgPOST:focus {
+    border: 1px solid #cc1616;
+    border-radius: 3%;
+    outline: none;
+}
+
+
+.bg-black {
+    background: black;
+    color: white;
+    opacity: .9;
+}
+
+#agregaradmin {
+    display: none;
+}
+
+#añadiradm {
+    border: none;
+    background: #cc1616;
+    color: white;
+    padding: 10px;
+}
+
+.init {
+    padding-top:100px;
+}

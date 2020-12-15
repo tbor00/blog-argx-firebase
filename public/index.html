@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="icon" href="assets/img/logo_circular.png">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Argxentia - Blog</title>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-firestore.js"></script>
+    <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  </head>
+  <body>
+
+ 
+ 
+ 
+  <div class="loguer">
+    <section id="header">
+    <nav id="menu" class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+      <a class="navbar-brand" href=""><img src="" class="logo" alt=""><img src="assets/img/rectancular.png" alt="" style="width: 140px; height: 40px;"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+          <a class="nav-link" href="" id="signina" data-toggle="modal" data-target="#signin" >Iniciar sesión</a>
+          <a class="nav-link" href=""  id="signout" >Desloguear</a>
+          <a class="nav-link"  id="name">Nombre</a>
+          <a class="nav-link" href="" id="crear" data-toggle="modal" data-target="#createPOST">Crear post</a>
+          <a class="nav-link" href="" id="agregaradmin" data-toggle="modal" data-target="#addadmin" >Añadir un administrador</a>
+        </div>
+      </div>
+    </nav>
+    <div class="init">
+      <h2 class="text-center init">ARGXENTIA - BLOG</h2>
+      <p class="text-center text-white" id="texto">Logueate para ver todos nuestros posts!</p>
+      <br>
+      <br>
+    <h6 class="text-center" id="cta"><a href="" class="link" data-toggle="modal" data-target="#signin">Logueate</a>
+      </h6> 
+    </div> 
+
+    <!--Iniciar sesión-->
+
+<div class="modal fade" id="signin" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Logueate!!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="usuario m-5">
+        <h6>¿Sos usuario?</h6>
+        <p>Identificate con google para ver todo el contenido!</p>
+        <button class="btn btn-danger" id="google">Identificarme con Google</button>
+      </div>
+      <div class="admin m-5">
+        <h6>¿Sos administrador?</h6>
+        <p>Identificate acá</p>
+        <form>
+        <input type="text" name="usuario" id="user" placeholder="Usuario" required>
+        <input type="password" name="usuario" id="pw" placeholder="Contraseña" required>
+        <input type="submit" value="Ingresar" id="ingresoadmin">
+      </form>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Añadir posteo-->
+
+<div class="modal fade" id="createPOST" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Crea tu POST</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="">
+        <input type="text" name="namepost" id="namepost" placeholder="Ingrese su nombre" required>
+        <input type="text" name="titulo" id="titulo" placeholder="Ingrese el titulo" required>
+        <textarea name="msgPOST" id="msgPOST" cols="30" rows="10" placeholder="Lo que quieras escribir"></textarea>
+        <input type="submit" value="SUBIR POST"  id="update">
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Añadir administrador-->
+<div class="modal fade" id="addadmin" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog" >
+    <div class="modal-content" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Añadí a un administrador!</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="">
+        <input type="text" name="nameadmin" id="nameadmin" placeholder="Ingrese el email del nuevo administrador" required>
+        <input type="password" name="pw" id="pwadmin" placeholder="Ingrese la contraseña del nuevo administrador" required>
+        <input type="submit" value="Añadir"  id="añadiradm">
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+</div>
+
+
+
+<!--Sección de Bloggin-->
+
+<section id="contenidoBLOG">
+  <h2 class="text-center text-dark">Contenido del blog</h2>
+    <div class="container p-4">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <ul class="list-group" id="posts">
+             
+          </ul>
+        </div>
+      </div>
+    </div>
+</section>
+<script>
+  var firebaseConfig = {
+    apiKey: "AIzaSyDXJ0UhS1D8Hlk5NtPUdDrI7py2LRrJH1Q",
+    authDomain: "argxentiablog.firebaseapp.com",
+    databaseURL: "https://argxentiablog-default-rtdb.firebaseio.com",
+    projectId: "argxentiablog",
+    storageBucket: "argxentiablog.appspot.com",
+    messagingSenderId: "218225781621",
+    appId: "1:218225781621:web:5da167db8e12b12c54413c"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+  const auth = firebase.auth();
+
+  const fs = firebase.firestore();
+</script>
+
+<script src="js/global.js"></script> 
+<script src="js/AuthGoogle.js"></script>
+<script src="js/Authadmins.js"></script>
+<script src="js/posts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+<script>
+  $(window).scroll(function () {
+  if ($("#menu").offset().top > 56) {
+    $("#menu").removeClass("bg-transparent");
+    $("#menu").addClass("bg-black");
+  } else {
+    $("#menu").removeClass("bg-black");
+    $("#menu").addClass("bg-transparent");
+  }
+});
+</script>
+</body>
+</html>
